@@ -6,11 +6,12 @@ function setup() {
   addSelectFunctionality(allEpisodes);
 }
 
-   //This is Displaying Number Code 
+   //This is header-Displaying Number Code 
 function makePageForEpisodes(episodeList) {
   const rootElem = document.getElementById("root");
   rootElem.innerHTML = "";
-  const episodeCountElem = document.createElement("pi");
+  const episodeCountElem = document.createElement("episode-count-p");
+  // episodeCountElem.className = "episode-count";
   episodeCountElem.textContent = `Displaying ${episodeList.length} / ${getAllEpisodes().length} episodes`;
   rootElem.appendChild(episodeCountElem);
 
@@ -19,7 +20,7 @@ function makePageForEpisodes(episodeList) {
   gridContainer.className = "grid-container";
   rootElem.appendChild(gridContainer);
 
-  //This is the each movie Card Code(grid-item)
+  //This is the each movie Card container Code(grid-item)
   episodeList.forEach((episode) => {
     const gridItem = document.createElement("div");
     gridItem.className = "grid-item";
@@ -56,6 +57,7 @@ function getEpisodeCode(episode) {
 //This is Search input Code
 function addSearchFunctionality(allEpisodes) {
   const searchElem = document.createElement("input");
+  searchElem.className = "search-input";
   searchElem.type = "text";
   searchElem.placeholder = "Search episodes";
   searchElem.addEventListener("input", () => {
@@ -74,16 +76,20 @@ function addSearchFunctionality(allEpisodes) {
   rootElem.insertBefore(searchElem, rootElem.firstChild);
 }
 
+
+
 //This is Select Code
 
 function addSelectFunctionality(allEpisodes) {
   const selectElem = document.createElement("select");
+  selectElem.className = "episo-select";
   selectElem.addEventListener("change", () => {
     const selectedOption = selectElem.options[selectElem.selectedIndex];
     const selectedEpisode = allEpisodes.find(
       (episode) => getEpisodeCode(episode) === selectedOption.value
     );
     makePageForEpisodes([selectedEpisode]);
+    
   });
 
   allEpisodes.forEach((episode) => {
@@ -98,6 +104,10 @@ function addSelectFunctionality(allEpisodes) {
 
   const rootElem = document.getElementById("root");
   rootElem.insertBefore(selectWrapperElem, rootElem.firstChild);
+
+  
 }
 
 window.onload = setup;
+
+

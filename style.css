@@ -1,10 +1,15 @@
 #root {
   color: red;
+  background-color: beige;
+  /* border: 5px solid royalblue; */
   
 }
-*body{
+
+/* * {
+  margin: 0;
   padding: 0;
-}
+} */
+
 .grid-container{
   
   display: grid;
@@ -16,37 +21,39 @@
   margin-left: 2rem;
   
 }
-select{
+.episo-select{ 
   /* border: 5px solid black; */
-  margin-left: 1rem;
-  height: 1.5rem;
-  
-  
+   margin-left: 2rem; 
+  height: 2rem;
+  margin-top: 1rem;
 }
-input{
+  
+
+  
+  
+.search-input{
   /* border: 5px solid blue; */
   height: 1.5rem;
-   margin-left: 22rem;
+  margin-left: 23rem;
+   /* margin-top: -10rem; */
  
 }
-pi {
+episode-count-p {
   /* border: 5px solid black; */
-  margin-left: 2rem;
-  
-  
+  margin-left: 5rem;
   
 }
-
+  
 .grid-item{
   border: 3px solid lightsalmon;
   border-radius: 1rem;
   margin-top: 2rem;
   background-color: brown;
   
+}
 
   
 
-}
 h2{
   border: 5px solid burlywood;
   border-radius: 1rem;
@@ -60,7 +67,8 @@ h2{
 }
 img{
   /* margin-top: 4rem; */
-  margin-left: 3rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
   
   
 }
@@ -69,3 +77,4 @@ summary{
   margin-right: 1.5rem;
   color: white;
 }
+
