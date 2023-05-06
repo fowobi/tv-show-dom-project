@@ -2,14 +2,19 @@
 function setup() {
   const allEpisodes = getAllEpisodes();
   makePageForEpisodes(allEpisodes);
-  addSearchFunctionality(allEpisodes);
-  addSelectFunctionality(allEpisodes);
+ 
+ 
+  console.log(allEpisodes);
 }
+
 
    //This is header-Displaying Number Code 
 function makePageForEpisodes(episodeList) {
+  
   const rootElem = document.getElementById("root");
   rootElem.innerHTML = "";
+   addSelectFunctionality(episodeList);
+   addSearchFunctionality(episodeList);
   const episodeCountElem = document.createElement("episode-count-p");
   // episodeCountElem.className = "episode-count";
   episodeCountElem.textContent = `Displaying ${episodeList.length} / ${getAllEpisodes().length} episodes`;
@@ -61,7 +66,7 @@ function addSearchFunctionality(allEpisodes) {
   searchElem.type = "text";
   searchElem.placeholder = "Search episodes";
   searchElem.addEventListener("input", () => {
-    const searchTerm = searchElem.value.trim().toLowerCase();
+    const searchTerm = searchElem.value.toLowerCase();
     const filteredEpisodes = allEpisodes.filter((episode) => {
       const name = episode.name.toLowerCase();
       const summary = episode.summary.toLowerCase();
@@ -69,7 +74,11 @@ function addSearchFunctionality(allEpisodes) {
     });
     
     makePageForEpisodes(filteredEpisodes);
-     updateEpisodeCount(filteredEpisodes.length, allEpisodes.length);
+    //  updateEpisodeCount(filteredEpisodes.length, allEpisodes.length);
+
+   
+
+    
   });
 
   const rootElem = document.getElementById("root");
