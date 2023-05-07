@@ -22,26 +22,27 @@
   
 }
 .episo-select{ 
-  border: 5px solid black;
-   /* margin-left: 2rem;  */
+  /* border: 5px solid black; */
+   margin-left: 2rem; 
   height: 2rem;
-  /* margin-top: -2rem; */
+  margin-top: 1rem;
 }
   
 
   
   
 .search-input{
-  border: 5px solid blue;
+  /* border: 5px solid blue; */
   height: 1.5rem;
-  /* margin-left: 23rem; */
-   /* margin-top: 2rem; */
+  margin-left: 23rem;
+   margin-top: -2rem;
  
 }
-episode-count-p {
-  border: 5px solid black;
-  /* margin-left: 40rem; */
-  /* margin-top: -9rem; */
+.episode-count{
+  /* border: 5px solid black; */
+  margin-left: 38rem;
+  margin-top: -1.3rem;
+  width: 20rem;
   
 }
   
@@ -68,7 +69,7 @@ h2{
 }
 img{
   /* margin-top: 4rem; */
-  margin-left: 1rem;
+  margin-left: 2rem;
   margin-right: 1rem;
   
   

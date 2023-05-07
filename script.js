@@ -2,8 +2,6 @@
 function setup() {
   const allEpisodes = getAllEpisodes();
   makePageForEpisodes(allEpisodes);
- 
- 
   console.log(allEpisodes);
 }
 
@@ -13,10 +11,10 @@ function makePageForEpisodes(episodeList) {
   
   const rootElem = document.getElementById("root");
   rootElem.innerHTML = "";
-   addSelectFunctionality(episodeList);
-   addSearchFunctionality(episodeList);
-  const episodeCountElem = document.createElement("episode-count-p");
-  // episodeCountElem.className = "episode-count";
+  addSelectFunctionality(episodeList);
+  addSearchFunctionality(episodeList);
+  const episodeCountElem = document.createElement("p");
+  episodeCountElem.className = "episode-count";
   episodeCountElem.textContent = `Displaying ${episodeList.length} / ${getAllEpisodes().length} episodes`;
   rootElem.appendChild(episodeCountElem);
 
@@ -82,7 +80,7 @@ function addSearchFunctionality(allEpisodes) {
   });
 
   const rootElem = document.getElementById("root");
-  rootElem.insertBefore(searchElem, rootElem.firstChild);
+  rootElem.insertBefore(searchElem, rootElem.secondChild);
 }
 
 
