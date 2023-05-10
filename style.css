@@ -34,13 +34,13 @@
   .search-input{  
    border: 5px solid blue; 
     height: 1.5rem; 
-   margin-left: 33rem; 
-    /* margin-top: -3rem;  */
+   margin-left: 43rem; 
+    /* margin-top: -5rem;  */
  
 } 
   .episode-count{  
    border: 5px solid black; 
-    margin-left: 45rem; 
+    margin-left: 55rem; 
    margin-top: -2rem; 
    width: 20rem; 
   
