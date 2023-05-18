@@ -10,37 +10,37 @@
   padding: 0;
 } */
 
- .grid-container{
+  /* .grid-container{
   
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 2rem;
   row-gap: 2rem;
-   height: 30px; 
+  height: 30px; 
   width: 70vw;
   margin-left: 2rem;
   
-} 
- .episode-select{    
+}   */
+  /* .episode-select{    
   border: 5px solid black;  
   margin-left: 2rem;  
   height: 2rem; 
   margin-top: 1rem; 
- }    
-   
+ }       */
+     
 
+   
   
+   /* .search-input{  
+    border: 5px solid blue; 
+    height: 1.5rem;  
+    margin-left: 43rem;        */
+    /* margin-top: 2rem;  */
   
-  .search-input{  
-   border: 5px solid blue; 
-    height: 1.5rem; 
-   margin-left: 43rem; 
-    /* margin-top: -5rem;  */
- 
-} 
-  .episode-count{  
+   /* }      */
+  /* .episode-count{  
    border: 5px solid black; 
-    margin-left: 55rem; 
+   margin-left: 55rem; 
    margin-top: -2rem; 
    width: 20rem; 
   
@@ -56,11 +56,11 @@
   margin-top: 2rem;
   background-color: brown;
   
-} 
+}  */
 
   
 
-h2{
+/* h2{
   border: 5px solid burlywood;
   border-radius: 1rem;
   background-color: beige;
@@ -70,17 +70,27 @@ h2{
   margin-top: -0.3rem;
   
   
-}
- img{
+} */
+ /* img{
   margin-top: 4rem;
   margin-left: 2rem;
   margin-right: 1rem;
   
   
-}  
-summary{
+}   */
+/* summary{
   margin-left: 1.5rem;
   margin-right: 1.5rem;
   color: white;
+}   */
+
+.filter-container{
+  border: 5px solid green;
+  width: 12rem;
 }
- 
+.show-name{
+  border: 5px solid black;
+}
+.show-summary{
+  border: 5px solid blue;
+}
