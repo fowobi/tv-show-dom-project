@@ -361,15 +361,15 @@ function makeShowsListing(shows) {
     showElem.addEventListener("click", () => {
       const episodesEndpoint = `https://api.tvmaze.com/shows/${show.id}/episodes`;
       fetch(episodesEndpoint)
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
           makePageForEpisodes(data);
-          const episodesContainer = rootElem.querySelector(".episodes-container");
+          const episodesContainer = rootElem.querySelector(
+            ".episodes-container"
+          );
           episodesContainer.style.display = "block";
-      
-          
-         })
-        .catch(error => console.log(error));
+        })
+        .catch((error) => console.log(error));
     });
 
     const showName = document.createElement("h2");
@@ -378,32 +378,70 @@ function makeShowsListing(shows) {
     showElem.appendChild(showName);
 
     const showImage = document.createElement("img");
+    showImage.className = "show-image";
     showImage.src = show.image.medium;
     showImage.alt = show.name;
-    showElem.appendChild(showImage);
-
-    
+    // showElem.appendChild(showImage);
 
     const showSummary = document.createElement("summary");
     showSummary.className = "show-summary";
     showSummary.innerHTML = show.summary;
-    showElem.appendChild(showSummary);
+    // showElem.appendChild(showSummary);
 
-    const showGenres = document.createElement("p");
-    showGenres.textContent = `Genres: ${show.genres.join(", ")}`;
-    showElem.appendChild(showGenres);
+    // const showGenres = document.createElement("p");
+    // showGenres.className = "show-genres";
+    // showGenres.textContent = `Genres: ${show.genres.join(", ")}`;
+    // // showElem.appendChild(showGenres);
 
-    const showStatus = document.createElement("p");
-    showStatus.textContent = `Status: ${show.status}`;
-    showElem.appendChild(showStatus);
+    // const showStatus = document.createElement("p");
+    // showStatus.className = "show-status";
+    // showStatus.textContent = `Status: ${show.status}`;
+    // showElem.appendChild(showStatus);
 
-    const showRating = document.createElement("p");
-    showRating.textContent = `Rating: ${show.rating.average || "N/A"}`;
-    showElem.appendChild(showRating);
+    // const showRating = document.createElement("p");
+    // showRating.className = "show-rating";
+    // showRating.textContent = `Rating: ${show.rating.average || "N/A"}`;
+    // // showElem.appendChild(showRating);
 
-    const showRuntime = document.createElement("p");
-    showRuntime.textContent = `Runtime: ${show.runtime} minutes`;
-    showElem.appendChild(showRuntime);
+    // const showRuntime = document.createElement("p");
+    // showRuntime.className = "show-runtime";
+    // showRuntime.textContent = `Runtime: ${show.runtime} minutes`;
+    // // showElem.appendChild(showRuntime);
+
+    // Create a div to wrap genres, status, rating, and runtime
+    const detailsContainer = document.createElement("div");
+    detailsContainer.className = "details-container";
+
+    const genresDiv = document.createElement("div");
+    genresDiv.textContent = `Genres: ${show.genres.join(", ")}`;
+
+    const statusDiv = document.createElement("div");
+    statusDiv.textContent = `Status: ${show.status}`;
+
+    const ratingDiv = document.createElement("div");
+    ratingDiv.textContent = `Rating: ${show.rating.average || "N/A"}`;
+
+    const runtimeDiv = document.createElement("div");
+    runtimeDiv.textContent = `Runtime: ${show.runtime} minutes`;
+
+    // Wrap the elements inside a div
+    const showDetails = document.createElement("div");
+    showDetails.className = "show-details";
+    showDetails.appendChild(showImage);
+    showDetails.appendChild(showSummary);
+    // showDetails.appendChild(showGenres);
+    // showDetails.appendChild(showStatus);
+    // showDetails.appendChild(showRating);
+    // showDetails.appendChild(showRuntime);
+
+    detailsContainer.appendChild(genresDiv);
+    detailsContainer.appendChild(statusDiv);
+    detailsContainer.appendChild(ratingDiv);
+    detailsContainer.appendChild(runtimeDiv);
+
+    showElem.appendChild(detailsContainer);
+
+    showElem.appendChild(showDetails);
 
     showsContainer.appendChild(showElem);
   });
@@ -539,6 +577,7 @@ function makePageForEpisodes(episodeList) {
     const episodeCode = getEpisodeCode(episode);
     const episodeTitle = `${episode.name} - ${episodeCode} `;
     const episodeTitleElem = document.createElement("h2");
+    episodeTitleElem.className = "episode-title-elem";
     episodeTitleElem.textContent = episodeTitle;
     gridItem.appendChild(episodeTitleElem);
    
@@ -550,6 +589,7 @@ function makePageForEpisodes(episodeList) {
 
     // This is the Episode summary code 
     const summaryElem = document.createElement("summary");
+    summaryElem.className = "summary-elem";
     summaryElem.innerHTML = episode.summary;
     gridItem.appendChild(summaryElem);
   });

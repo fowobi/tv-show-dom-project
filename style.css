@@ -10,7 +10,7 @@
   padding: 0;
 } */
 
-  /* .grid-container{
+  .grid-container{
   
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -20,25 +20,25 @@
   width: 70vw;
   margin-left: 2rem;
   
-}   */
-  /* .episode-select{    
+}   
+   .episode-select{    
   border: 5px solid black;  
   margin-left: 2rem;  
   height: 2rem; 
   margin-top: 1rem; 
- }       */
+ }       
      
 
    
   
-   /* .search-input{  
+    .search-input{  
     border: 5px solid blue; 
     height: 1.5rem;  
-    margin-left: 43rem;        */
+    margin-left: 43rem;        
     /* margin-top: 2rem;  */
   
-   /* }      */
-  /* .episode-count{  
+   }      
+  .episode-count{  
    border: 5px solid black; 
    margin-left: 55rem; 
    margin-top: -2rem; 
@@ -56,11 +56,11 @@
   margin-top: 2rem;
   background-color: brown;
   
-}  */
+}  
 
   
 
-/* h2{
+  .episode-title-elem{
   border: 5px solid burlywood;
   border-radius: 1rem;
   background-color: beige;
@@ -70,27 +70,66 @@
   margin-top: -0.3rem;
   
   
-} */
- /* img{
+}  
+ img{
   margin-top: 4rem;
   margin-left: 2rem;
   margin-right: 1rem;
   
   
-}   */
-/* summary{
+}   
+ .summary-elem{
   margin-left: 1.5rem;
   margin-right: 1.5rem;
   color: white;
-}   */
+}    
 
 .filter-container{
-  border: 5px solid green;
-  width: 12rem;
+  display: flex;
+  justify-content: space-evenly;
+  /* border: 5px solid green; */
+  /* width: 12rem;
+  margin-left: 15rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem; */
 }
 .show-name{
   border: 5px solid black;
 }
 .show-summary{
   border: 5px solid blue;
+  width: 35rem;
+  margin-left: 1.5rem;
+  /* margin-top: -15rem; */
+}
+.show{
+  /* display: flex; */
+  border:5px solid red;
+  margin-top: 1rem;
+  /* height: 30px; */
+    /* width: 80vw; */
+
+}
+
+/* .show-genres{
+  margin-left: 70rem;
+  margin-top: 3rem;
+} */
+
+.show-image{
+  margin-left: 2rem;
+}
+
+.show-details{
+  display: flex;
+  
+}
+.details-container{
+  /* align-items: center; */
+  margin-left: 60rem;
+  /* display: block; */
+  /* justify-content: space-between; */
+  border: 5px solid green;
+  width: 20rem;
+  /* margin-top: 6rem; */
 }
