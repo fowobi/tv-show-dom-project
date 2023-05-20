@@ -347,6 +347,41 @@ function setup() {
     .catch(error => console.log(error));
 }
 
+
+function addSearchFunctionality(allShows) {
+  const searchElem = document.createElement("input");
+  searchElem.className = "search-input";
+  searchElem.type = "text";
+  searchElem.placeholder = "Search shows";
+  searchElem.addEventListener("input", () => {
+    const searchTerm = searchElem.value.toLowerCase();
+    const filteredShows = allShows.filter((show) => {
+      const name = show.name.toLowerCase();
+      const genres = show.genres.map((genre) => genre.toLowerCase());
+      const summary = show.summary.toLowerCase();
+      return (
+        name.includes(searchTerm) ||
+        genres.includes(searchTerm) ||
+        summary.includes(searchTerm)
+      );
+    });
+    makeShowsListing(filteredShows);
+  });
+
+  const rootElem = document.getElementById("root");
+  rootElem.insertBefore(searchElem, rootElem.firstChild);
+}
+
+
+
+
+
+
+
+
+
+
+
 function makeShowsListing(shows) {
   const rootElem = document.getElementById("root");
   rootElem.innerHTML = "";
@@ -364,9 +399,7 @@ function makeShowsListing(shows) {
         .then((response) => response.json())
         .then((data) => {
           makePageForEpisodes(data);
-          const episodesContainer = rootElem.querySelector(
-            ".episodes-container"
-          );
+          const episodesContainer = rootElem.querySelector(".episodes-container");
           episodesContainer.style.display = "block";
         })
         .catch((error) => console.log(error));
@@ -376,52 +409,42 @@ function makeShowsListing(shows) {
     showName.className = "show-name";
     showName.textContent = show.name;
     showElem.appendChild(showName);
+    
+
+     
 
     const showImage = document.createElement("img");
     showImage.className = "show-image";
     showImage.src = show.image.medium;
     showImage.alt = show.name;
-    // showElem.appendChild(showImage);
+    showElem.appendChild(showImage);
 
     const showSummary = document.createElement("summary");
     showSummary.className = "show-summary";
     showSummary.innerHTML = show.summary;
-    // showElem.appendChild(showSummary);
+    showElem.appendChild(showSummary);
 
-    // const showGenres = document.createElement("p");
-    // showGenres.className = "show-genres";
-    // showGenres.textContent = `Genres: ${show.genres.join(", ")}`;
-    // // showElem.appendChild(showGenres);
+   
 
-    // const showStatus = document.createElement("p");
-    // showStatus.className = "show-status";
-    // showStatus.textContent = `Status: ${show.status}`;
-    // showElem.appendChild(showStatus);
-
-    // const showRating = document.createElement("p");
-    // showRating.className = "show-rating";
-    // showRating.textContent = `Rating: ${show.rating.average || "N/A"}`;
-    // // showElem.appendChild(showRating);
-
-    // const showRuntime = document.createElement("p");
-    // showRuntime.className = "show-runtime";
-    // showRuntime.textContent = `Runtime: ${show.runtime} minutes`;
-    // // showElem.appendChild(showRuntime);
-
+    
     // Create a div to wrap genres, status, rating, and runtime
     const detailsContainer = document.createElement("div");
     detailsContainer.className = "details-container";
 
     const genresDiv = document.createElement("div");
+    genresDiv.className = "show-genres";
     genresDiv.textContent = `Genres: ${show.genres.join(", ")}`;
 
     const statusDiv = document.createElement("div");
+    statusDiv.className = "status-div";
     statusDiv.textContent = `Status: ${show.status}`;
 
     const ratingDiv = document.createElement("div");
+    ratingDiv.className = "status-div";
     ratingDiv.textContent = `Rating: ${show.rating.average || "N/A"}`;
 
     const runtimeDiv = document.createElement("div");
+     runtimeDiv.className = "status-div";
     runtimeDiv.textContent = `Runtime: ${show.runtime} minutes`;
 
     // Wrap the elements inside a div
@@ -429,22 +452,58 @@ function makeShowsListing(shows) {
     showDetails.className = "show-details";
     showDetails.appendChild(showImage);
     showDetails.appendChild(showSummary);
-    // showDetails.appendChild(showGenres);
-    // showDetails.appendChild(showStatus);
-    // showDetails.appendChild(showRating);
-    // showDetails.appendChild(showRuntime);
+    
 
     detailsContainer.appendChild(genresDiv);
     detailsContainer.appendChild(statusDiv);
     detailsContainer.appendChild(ratingDiv);
     detailsContainer.appendChild(runtimeDiv);
 
+    showElem.appendChild(showDetails);
+   
     showElem.appendChild(detailsContainer);
 
-    showElem.appendChild(showDetails);
+
+// const showGenres = document.createElement("div");
+// showGenres.className = "show-genres";
+// showGenres.textContent = `Genres: ${show.genres.join(", ")}`;
+// showElem.appendChild(showGenres);
+
+// const showStatus = document.createElement("div");
+// showStatus.className = "show-status";
+// showStatus.textContent = `Status: ${show.status}`;
+// showElem.appendChild(showStatus);
+
+// const showRating = document.createElement("div");
+// showRating.className = "show-rating";
+// showRating.textContent = `Rating: ${show.rating.average || "N/A"}`;
+// showElem.appendChild(showRating);
+
+// const showRuntime = document.createElement("div");
+// showRuntime.className = "show-runtime";
+// showRuntime.textContent = `Runtime: ${show.runtime} minutes`;
+// showElem.appendChild(showRuntime);
+
+ 
+
+
+
+
+
+
+
+
 
     showsContainer.appendChild(showElem);
   });
+  
+  if (shows.length === 0) {
+    const noResultsElem = document.createElement("div");
+    noResultsElem.className = "no-results";
+    noResultsElem.textContent = "No results found.";
+    showsContainer.appendChild(noResultsElem);
+  }
+
 }
 
 function addShowFiltering(allShows) {
@@ -468,7 +527,9 @@ function addShowFiltering(allShows) {
   });
   filterContainer.appendChild(filterInput);
 
-  const filterCount = document.createElement("p");
+
+
+const filterCount = document.createElement("p");
   filterCount.className = "filter-count";
   filterContainer.appendChild(filterCount);
 
@@ -540,7 +601,7 @@ rootElem.appendChild(episodesContainer);
 episodesContainer.innerHTML = "";
 }
 }
-// Rest of the code remains the same...
+
 
  
 // This is the Season Code
@@ -708,7 +769,6 @@ rootElem.insertBefore(selectWrapperElem, rootElem.firstChild);
 }
 
 window.onload = setup;
-
 
 
 
