@@ -457,7 +457,7 @@ function addShowFiltering(allShows) {
 
     // console.log("here", filteredShows);
     makeFilteredShowsListing(filteredShows);
-    
+
   });
   filterContainer.appendChild(filterInput);
 
