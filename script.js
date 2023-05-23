@@ -300,13 +300,7 @@
 
 // window.onload = setup;
 
-// function setup() {
-//   const endpoint = 'https://api.tvmaze.com/shows/82/episodes';
-//   fetch(endpoint)
-//     .then(response => response.json())
-//     .then(data => makePageForEpisodes(data))
-//     .catch(error => console.log(error));
-// }
+
 
 function setup() {
   const showsEndpoint = "https://api.tvmaze.com/shows";
@@ -327,6 +321,7 @@ function setup() {
     .then((response) => response.json())
     .then((data) => makePageForEpisodes(data))
     
+      
     .catch((error) => console.log(error));
 }
 
@@ -353,8 +348,6 @@ function addSearchFunctionality(allShows) {
   const rootElem = document.getElementById("root");
   rootElem.insertBefore(searchElem, rootElem.firstChild);
 }
-
-
 
 function makeShowsListing(shows) {
   const rootElem = document.getElementById("root");
@@ -414,8 +407,6 @@ function makeShowsListing(shows) {
     statusDiv.className = "status-div";
     statusDiv.textContent = `Status: ${show.status}`;
 
-   
-
     const runtimeDiv = document.createElement("div");
     runtimeDiv.className = "status-div";
     runtimeDiv.textContent = `Runtime: ${show.runtime} minutes`;
@@ -434,11 +425,6 @@ function makeShowsListing(shows) {
     showElem.appendChild(showDetails);
 
     showElem.appendChild(detailsContainer);
-
-    
-
-
-
     showsContainer.appendChild(showElem);
   });
 
@@ -450,12 +436,8 @@ function makeShowsListing(shows) {
   }
  }
 
-  
-
-
 function addShowFiltering(allShows) {
   const rootElem = document.getElementById("root");
-
   const filterContainer = document.createElement("div");
   filterContainer.className = "filter-container";
   rootElem.insertBefore(filterContainer, rootElem.firstChild);
@@ -472,8 +454,10 @@ function addShowFiltering(allShows) {
         showName.includes(filterValue) || showSummary.includes(filterValue)
       );
     });
+
     // console.log("here", filteredShows);
     makeFilteredShowsListing(filteredShows);
+    
   });
   filterContainer.appendChild(filterInput);
 
@@ -486,12 +470,6 @@ function addShowFiltering(allShows) {
   filteredShowsContainer.className = "filtered-shows-container";
   rootElem.appendChild(filteredShowsContainer);
 
-
-  
-
-
-
-  
   function makeFilteredShowsListing(filteredShows) {
     filteredShowsContainer.innerHTML = "";
     filterCount.textContent = `Found ${filteredShows.length} shows`;
@@ -524,57 +502,36 @@ function addShowFiltering(allShows) {
         (show) => show.id === selectedShowId
       );
 
-      if (selectedShow) {
-        const episodesEndpoint = `https://api.tvmaze.com/shows/${selectedShow.id}/episodes`;
-        fetch(episodesEndpoint)
-          .then((response) => response.json())
-          .then((data) => {
-            makePageForEpisodes(data);
-            const episodesContainer = rootElem.querySelector(
-              ".episodes-container"
-            );
-            episodesContainer.style.display = "block";
-          })
-          .catch((error) => console.log(error));
+     
+     if (selectedShow) {
+      
+    console.log(selectedShow);
+    }
+    
+    // Clear existing show details
+      const existingShowDetailsContainer = rootElem.querySelector(".show-details-container");
+      if (existingShowDetailsContainer) {
+        existingShowDetailsContainer.remove();
       }
+    
+      // Hide all show divs
+      const showsContainer = document.querySelector(".shows-container");
+      const showDivs = showsContainer.getElementsByClassName("show");
+      for (let i = 0; i < showDivs.length; i++) {
+        const showDiv = showDivs[i];
+        showDiv.style.display = "none";
+      }
+    
+      // Show only the selected show
+      const selectedShowDiv = showsContainer.querySelector(`[data-show-id="${selectedShow.id}"]`);
+      if (selectedShowDiv) {
+        selectedShowDiv.style.display = "block";
+      }
+    }
+  
 
-
-      //   if (selectedShow) {
-      //    const showSummary = document.createElement("summary");
-      //    showSummary.className = "show-summary";
-      //    showSummary.innerHTML = selectedShow.summary;
-      //    filteredShowsContainer.appendChild(showSummary);
-      //  }
-      //  const episodesEndpoint = `https://api.tvmaze.com/shows/${selectedShow.id}/episodes`;
-      //  fetch(episodesEndpoint)
-      //    .then((response) => response.json())
-      //    .then((data) => {
-      //      makePageForEpisodes(data);
-      //      const episodesContainer = rootElem.querySelector(
-      //        ".episodes-container"
-      //      );
-      //      episodesContainer.style.display = "block";
-      //    })
-      //    .catch((error) => console.log(error));
-
-      // if (selectedShow) {
-      //   const currentShowElem = rootElem.querySelector(".current-show");
-      //   currentShowElem.innerHTML = ""; // Clear the current show element
-      //   makeSingleShowListing(selectedShow, currentShowElem);
-      // }
-      
-
-      //  if (selectedShow) {
-      //    const currentShowElem = document.querySelector(".current-show");
-      //    currentShowElem.innerHTML = ""; // Clear the current show element
-      //    makeSingleShowListing(selectedShow, currentShowElem);
-      //  }
-      
-      //  if (selectedShow) {
-      //    makeSingleShowListing(selectedShow);
-      //  }
-    });
-
+);
+     
     filteredShows.forEach((show) => {
       const showOption = document.createElement("option");
       showOption.value = show.id;
@@ -597,36 +554,8 @@ function addShowFiltering(allShows) {
       }
     }
   }
+
 }
-
-
-  
-
-
- 
-
-
-
-  
-
-
-
-
-
-  
-    
-
-
-
-
-
-  
-
-
-
-
-
-
 
 
 // function makePageForEpisodes(episodeList) {
