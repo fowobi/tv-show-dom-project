@@ -180,7 +180,7 @@ function addShowFiltering(allShows) {
 
     const rootElem = document.getElementById("root");
 
-    //Remove existing dropdown container if it exists
+    //Remove existing dropdown container code
     const existingDropdownContainer = document.querySelector(".filtered-shows-dropdown-container");
     if (existingDropdownContainer) {
       existingDropdownContainer.remove();
@@ -205,13 +205,13 @@ function addShowFiltering(allShows) {
     console.log(selectedShow);
     }
     
-    // Clear existing show details
+    // Clear existing show details code
       const existingShowDetailsContainer = rootElem.querySelector(".show-details-container");
       if (existingShowDetailsContainer) {
         existingShowDetailsContainer.remove();
       }
     
-      // Hide all show divs
+      // Hide all show divs code
       const showsContainer = document.querySelector(".shows-container");
       const showDivs = showsContainer.getElementsByClassName("show");
       for (let i = 0; i < showDivs.length; i++) {
@@ -344,80 +344,214 @@ function makePageForEpisodes(episodeList, selectedShowId = "") {
 //   rootElem.insertBefore(searchElem, rootElem.firstChild);
 // }
 
-//commented code
+// //commented code
+// function addSelectFunctionality(allEpisodes) {
+//   const selectWrapperElem = document.createElement("div");
+//   selectWrapperElem.className = "select-wrapper";
+
+
+
+//   // Create episode select input
+//   const episodeSelectElem = document.createElement("select");
+//   episodeSelectElem.className = "episode-select";
+//    episodeSelectElem.onchange = function () {
+//    const selectedOption = episodeSelectElem.options[episodeSelectElem.selectedIndex];
+//     const selectedEpisode = allEpisodes.find((episode) => episode.id === parseInt(selectedOption.value));
+//     makePageForEpisodes([selectedEpisode]);
+//     window.location.hash = `#${episodeSelectElem.value}`;
+//   };
+
+//   // Add option for all episodes
+//   const allEpisodesOption = document.createElement("option");
+//   allEpisodesOption.value = "";
+//   allEpisodesOption.textContent = "All Episodes";
+//   episodeSelectElem.appendChild(allEpisodesOption);
+
+//  // Create a copy of the original episode data
+//     const originalEpisodes = [...allEpisodes];
+
+//   //Sort episodes by name in alphabetical order, case-insensitive
+//   allEpisodes.sort((a, b) =>
+//     a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+//   );
+
+ 
+//    // new code-just now
+//    allEpisodes.forEach((episode) => {
+//     const episodeOption = document.createElement("option");
+//     episodeOption.value = episode.id;
+//     episodeOption.textContent = getEpisodeCode(episode) + " - " + episode.name;
+//     episodeSelectElem.appendChild(episodeOption);
+//   });
+
+
+//   // Add episode select input to select wrapper
+//   selectWrapperElem.appendChild(episodeSelectElem);
+
+//   // Create movie select input- just commented
+//    const movieSelectElem = document.createElement("select");
+//    movieSelectElem.className = "movie-select";
+//    movieSelectElem.addEventListener("change", () => {
+//     const selectedOption = movieSelectElem.options[movieSelectElem.selectedIndex];
+//     const selectedShowId = selectedOption.value;
+ 
+//   if (selectedShowId !== " ") {
+//       const selectedShow = allShows.find((show) => show.id === parseInt(selectedShowId));
+//     const endpoint = `https://api.tvmaze.com/shows/${selectedShow.id}/episodes`;
+//       fetch(endpoint)
+//         .then((response) => response.json())
+//         .then((data) => {
+//           allEpisodes = data; 
+//           resetEpisodeDropdown();
+//           makePageForEpisodes(data);
+           
+//         })
+//         .catch((error) => console.log(error));
+//     } else {
+//       resetEpisodeDropdown();
+//       makePageForEpisodes(allEpisodes);
+        
+//     }
+//   });
+   
+
+//   // Add option for no movie selected
+//   const noMovieOption = document.createElement("option");
+//   noMovieOption.value = " ";
+//   noMovieOption.textContent = "Select a Show";
+//   movieSelectElem.appendChild(noMovieOption);
+  
+//  // Retrieve the list of shows using getAllShows() function
+//   const allShows = getAllShows();
+
+// // Extract show names from the objects
+//   const showNames = allShows.map((show) => show.name);
+
+  
+//   // Sort show names in alphabetical order, case-insensitive
+//  showNames.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+
+//   // new code-just-commented now
+//    showNames.forEach((showName) => {
+//     const showOption = document.createElement("option");
+//     showOption.textContent = showName;
+
+//     // Find the corresponding show object by name
+//     const show = allShows.find((show) => show.name === showName);
+//     showOption.value = show.id;
+//     movieSelectElem.appendChild(showOption);
+//   });
+
+   
+//   // Add movie select input to select wrapper
+//   selectWrapperElem.appendChild(movieSelectElem);
+
+//   // Add select wrapper to root element
+//   const rootElem = document.getElementById("root");
+//   rootElem.appendChild(selectWrapperElem);
+
+//  // Function to reset the episode dropdown to display all episodes
+//   function resetEpisodeDropdown() {
+//   const selectedOptionValue = episodeSelectElem.value;
+//    episodeSelectElem.innerHTML = ""; 
+
+
+//    const allEpisodesOption = document.createElement("option");
+//     allEpisodesOption.value = "";
+//     allEpisodesOption.textContent = "All Episodes";
+//     episodeSelectElem.appendChild(allEpisodesOption);
+
+
+//     originalEpisodes.forEach((episode) => {
+//       const episodeOption = document.createElement("option");
+//       episodeOption.value = episode.id;
+//       episodeOption.textContent = getEpisodeCode(episode) + " - " + episode.name;
+//       episodeSelectElem.appendChild(episodeOption);
+//     });
+
+//        if (selectedOptionValue) {
+//        episodeSelectElem.value = selectedOptionValue;
+//     }
+ 
+// }
+
+
+
+
+
+// window.onload = setup;
+
+
+
+
 function addSelectFunctionality(allEpisodes) {
   const selectWrapperElem = document.createElement("div");
   selectWrapperElem.className = "select-wrapper";
 
-
-
   // Create episode select input
   const episodeSelectElem = document.createElement("select");
   episodeSelectElem.className = "episode-select";
-   episodeSelectElem.onchange = function () {
-   const selectedOption = episodeSelectElem.options[episodeSelectElem.selectedIndex];
+
+  // Function to populate episode options in the dropdown
+  function populateEpisodeOptions() {
+    episodeSelectElem.innerHTML = "";
+
+    // Add option for all episodes
+    const allEpisodesOption = document.createElement("option");
+    allEpisodesOption.value = "";
+    allEpisodesOption.textContent = "All Episodes";
+    episodeSelectElem.appendChild(allEpisodesOption);
+
+    allEpisodes.forEach((episode) => {
+      const episodeOption = document.createElement("option");
+      episodeOption.value = episode.id;
+      episodeOption.textContent = getEpisodeCode(episode) + " - " + episode.name;
+      episodeSelectElem.appendChild(episodeOption);
+    });
+  }
+
+  // Call the function to initially populate episode options
+  populateEpisodeOptions(allEpisodes);
+
+  episodeSelectElem.onchange = function () {
+    const selectedOption = episodeSelectElem.options[episodeSelectElem.selectedIndex];
     const selectedEpisode = allEpisodes.find((episode) => episode.id === parseInt(selectedOption.value));
     makePageForEpisodes([selectedEpisode]);
     window.location.hash = `#${episodeSelectElem.value}`;
   };
 
-  // Add option for all episodes
-  const allEpisodesOption = document.createElement("option");
-  allEpisodesOption.value = "";
-  allEpisodesOption.textContent = "All Episodes";
-  episodeSelectElem.appendChild(allEpisodesOption);
-
- // Create a copy of the original episode data
-    const originalEpisodes = [...allEpisodes];
-
-  //Sort episodes by name in alphabetical order, case-insensitive
-  allEpisodes.sort((a, b) =>
-    a.name.toLowerCase().localeCompare(b.name.toLowerCase())
-  );
-
- 
-   // new code-just now
-   allEpisodes.forEach((episode) => {
-    const episodeOption = document.createElement("option");
-    episodeOption.value = episode.id;
-    episodeOption.textContent = getEpisodeCode(episode) + " - " + episode.name;
-    episodeSelectElem.appendChild(episodeOption);
-  });
-
-
   // Add episode select input to select wrapper
   selectWrapperElem.appendChild(episodeSelectElem);
 
-  // Create movie select input- just commented
-   const movieSelectElem = document.createElement("select");
-   movieSelectElem.className = "movie-select";
-   movieSelectElem.addEventListener("change", () => {
+  
+
+  // Create movie select input
+  const movieSelectElem = document.createElement("select");
+  movieSelectElem.className = "movie-select";
+  movieSelectElem.addEventListener("change", () => {
     const selectedOption = movieSelectElem.options[movieSelectElem.selectedIndex];
     const selectedShowId = selectedOption.value;
- 
-  if (selectedShowId !== "") {
+
+    if (selectedShowId !== "") {
       const selectedShow = allShows.find((show) => show.id === parseInt(selectedShowId));
-    const endpoint = `https://api.tvmaze.com/shows/${selectedShow.id}/episodes`;
+      const endpoint = `https://api.tvmaze.com/shows/${selectedShow.id}/episodes`;
       fetch(endpoint)
         .then((response) => response.json())
         .then((data) => {
-          allEpisodes = data; 
-          resetEpisodeDropdown();
+          allEpisodes = data;
+          populateEpisodeOptions(); // Update episode options in the dropdown
           makePageForEpisodes(data);
-           
         })
         .catch((error) => console.log(error));
     } else {
-      resetEpisodeDropdown();
+      populateEpisodeOptions(allEpisodes); // Update episode options in the dropdown
       makePageForEpisodes(allEpisodes);
-        
     }
   });
-   
 
-  // Add option for no movie selected
+     // Add option for no movie selected
   const noMovieOption = document.createElement("option");
-  noMovieOption.value = "";
+  noMovieOption.value = " ";
   noMovieOption.textContent = "Select a Show";
   movieSelectElem.appendChild(noMovieOption);
   
@@ -442,7 +576,6 @@ function addSelectFunctionality(allEpisodes) {
     movieSelectElem.appendChild(showOption);
   });
 
-   
   // Add movie select input to select wrapper
   selectWrapperElem.appendChild(movieSelectElem);
 
@@ -450,19 +583,15 @@ function addSelectFunctionality(allEpisodes) {
   const rootElem = document.getElementById("root");
   rootElem.appendChild(selectWrapperElem);
 
- // Function to reset the episode dropdown to display all episodes
-function resetEpisodeDropdown() {
-  episodeSelectElem.innerHTML = ""; 
 
  
-}
+
+  }
 
 
-}
 
 
 window.onload = setup;
-
 
 
 
