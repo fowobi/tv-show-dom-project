@@ -41,7 +41,7 @@
   .episode-count{  
    border: 5px solid black; 
    margin-left: 55rem; 
-   margin-top: -2rem; 
+   /* margin-top: -2rem;  */
    width: 20rem; 
   
 }  
