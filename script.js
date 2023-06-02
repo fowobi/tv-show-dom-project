@@ -133,6 +133,7 @@ function makeShowsListing(shows) {
   }
  }
 
+
 function addShowFiltering(allShows) {
   const rootElem = document.getElementById("root");
   const filterContainer = document.createElement("div");
