@@ -94,6 +94,10 @@ if (episodesContainer) {
     showSummary.innerHTML = show.summary;
     showElem.appendChild(showSummary);
 
+
+
+
+    
     // Create a div to wrap genres, status, rating, and runtime
     const detailsContainer = document.createElement("div");
     detailsContainer.className = "details-container";
@@ -129,7 +133,8 @@ if (episodesContainer) {
 
     showElem.appendChild(detailsContainer);
     showsContainer.appendChild(showElem);
-  });
+
+});
 
   if (shows.length === 0) {
     const noResultsElem = document.createElement("div");
@@ -138,6 +143,12 @@ if (episodesContainer) {
     showsContainer.appendChild(noResultsElem);
   }
  }
+
+
+
+
+
+
 
 
 
