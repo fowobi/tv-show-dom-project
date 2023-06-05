@@ -28,11 +28,8 @@
   margin-top: 1rem; 
  }       
      
-
-   
-  
-   .search-input{  
-    border: 5px solid blue; 
+  .search-input{  
+    /* border: 5px solid blue;  */
     height: 1.5rem;  
     margin-left: 40rem;         
     /* margin-top: 2rem;  */
