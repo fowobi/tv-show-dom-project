@@ -66,8 +66,14 @@ function makeShowsListing(shows) {
         .then((response) => response.json())
         .then((data) => {
           makePageForEpisodes(data);
+          // const episodesContainer = rootElem.querySelector(".episodes-container");
+          // episodesContainer.style.display = "block";
+
           const episodesContainer = rootElem.querySelector(".episodes-container");
-          episodesContainer.style.display = "block";
+if (episodesContainer) {
+  episodesContainer.style.display = "block";
+}
+
         })
         .catch((error) => console.log(error));
     });
@@ -134,7 +140,77 @@ function makeShowsListing(shows) {
  }
 
 
-function addShowFiltering(allShows) {
+
+
+
+
+// function addSearchFunctionality(allShows) {
+//    const searchElem = document.createElement("input");
+//    searchElem.className = "search-input";
+//    searchElem.type = "text";
+//    searchElem.placeholder = "Search shows";
+// searchElem.addEventListener("input", (event) => {
+//   const searchTerm = event.target.value.toLowerCase();
+//   // const filteredShows = allShows.filter((show) => {
+//     const filteredShows = allShows ? allShows.filter((show) => {
+//     const name = show.name.toLowerCase();
+//     const genres = show.genres.map((genre) => genre.toLowerCase());
+//     const summary = show.summary.toLowerCase();
+//     return (
+//       name.includes(searchTerm) ||
+//       genres.includes(searchTerm) ||
+//       summary.includes(searchTerm)
+//     );
+//   }) : [];
+//   makeShowsListing(filteredShows);
+// });
+// const rootElem = document.getElementById("root");
+//   rootElem.insertBefore(searchElem, rootElem.firstChild);
+// }
+
+
+
+
+
+
+
+
+// function addSearchFunctionality(allShows) {
+//   const searchElem = document.createElement("input");
+//   searchElem.className = "search-input";
+//   searchElem.type = "text";
+//   searchElem.placeholder = "Search shows";
+//   searchElem.addEventListener("input", (event) => {
+//      event.preventDefault();
+//     const searchTerm = searchElem.value.toLowerCase();
+//     const filteredShows = allShows.filter((show) => {
+//       const name = show.name.toLowerCase();
+//       const genres = show.genres.map((genre) => genre.toLowerCase());
+//       const summary = show.summary.toLowerCase();
+//       return (
+//         name.includes(searchTerm) ||
+//         genres.includes(searchTerm) ||
+//         summary.includes(searchTerm)
+//       );
+//     });
+//     makeShowsListing(filteredShows);
+//   });
+
+//   const rootElem = document.getElementById("root");
+//   rootElem.insertBefore(searchElem, rootElem.firstChild);
+// }
+
+
+
+
+
+
+
+
+
+
+
+ function addShowFiltering(allShows) {
   const rootElem = document.getElementById("root");
   const filterContainer = document.createElement("div");
   filterContainer.className = "filter-container";
@@ -254,6 +330,34 @@ function addShowFiltering(allShows) {
   }
 
 }
+
+
+// function addSearchFunctionality(allShows) {
+//   const searchElem = document.createElement("input");
+//   searchElem.className = "search-input";
+//   searchElem.type = "text";
+//   searchElem.placeholder = "Search shows";
+//   searchElem.addEventListener("input", (event) => {
+//      event.preventDefault();
+//     const searchTerm = searchElem.value.toLowerCase();
+//     const filteredShows = allShows.filter((show) => {
+//       const name = show.name.toLowerCase();
+//       const genres = show.genres.map((genre) => genre.toLowerCase());
+//       const summary = show.summary.toLowerCase();
+//       return (
+//         name.includes(searchTerm) ||
+//         genres.includes(searchTerm) ||
+//         summary.includes(searchTerm)
+//       );
+//     });
+//     makeShowsListing(filteredShows);
+//   });
+
+//   const rootElem = document.getElementById("root");
+//   rootElem.insertBefore(searchElem, rootElem.firstChild);
+// }
+
+
 
 
 // function makePageForEpisodes(episodeList) {
